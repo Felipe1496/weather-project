@@ -1,33 +1,57 @@
 import { useRouter } from 'next/router';
-import { createContext, FC, ReactNode } from 'react';
+import { createContext, FC, ReactNode, useEffect, useState } from 'react';
 
 import { messages } from '@/translations/languages';
-import { Language } from '@/translations/types';
+
+import { ENGLISH, EN_US, ES_ES, PORTUGUESE, SPANISH } from './constants';
+import { CurrentLanguage, LanguageContextProps } from './types';
 
 interface Props {
   children: ReactNode;
 }
 
-interface LanguageContextProps {
-  // eslint-disable-next-line no-unused-vars
-  handleChangeLanguage: (lang: string) => void;
-  translatable: Language;
-}
-
 export const LanguageContext = createContext({} as LanguageContextProps);
 
 const LanguageContextProvider: FC<Props> = ({ children }) => {
+  const [currentLanguage, setCurrentLanguage] = useState<CurrentLanguage>('Português');
   const router = useRouter();
   const { locale } = router;
 
-  const translatable = locale === 'pt-BR' ? messages.pt : messages.en;
+  useEffect(() => {
+    switch (locale) {
+      case 'en-US':
+        setCurrentLanguage(ENGLISH);
+        break;
+      case 'es-ES':
+        setCurrentLanguage(SPANISH);
+        break;
+      default:
+        setCurrentLanguage(PORTUGUESE);
+        break;
+    }
+  }, [locale]);
 
-  const handleChangeLanguage = (lang: string) => {
-    router.push('/', '/', { locale: lang });
+  const translatable = () => {
+    switch (locale) {
+      case EN_US:
+        return messages.en;
+      case ES_ES:
+        return messages.es;
+      default:
+        return messages.pt;
+    }
   };
 
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
-  return <LanguageContext.Provider value={{ handleChangeLanguage, translatable }}>{children}</LanguageContext.Provider>;
+  const handleChangeLanguage = (language: string) => {
+    router.push('/', '/', { locale: language });
+  };
+
+  return (
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <LanguageContext.Provider value={{ handleChangeLanguage, translatable, currentLanguage }}>
+      {children}
+    </LanguageContext.Provider>
+  );
 };
 
 export default LanguageContextProvider;

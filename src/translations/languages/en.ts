@@ -1,10 +1,13 @@
 const messages = {
   en: {
     titles: {
-      time: 'How is weather today?',
+      time: 'How is the weather today?',
     },
     placeholder: {
-      city: 'Type name of the city',
+      city: 'Enter the city name',
+    },
+    small: {
+      currentLanguage: 'Current Language',
     },
   },
 };

@@ -6,6 +6,9 @@ const messages = {
     placeholder: {
       city: 'Digite o nome da cidade',
     },
+    small: {
+      currentLanguage: 'Idioma selecionado',
+    },
   },
 };
 
