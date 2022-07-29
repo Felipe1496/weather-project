@@ -1,1 +1,1 @@
-export const PAGE_TITLE = 'Página inicial';
+export const PAGE_TITLE = 'Weather';
