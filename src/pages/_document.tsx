@@ -8,7 +8,9 @@ const Document: FC = () => (
       <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
       <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
       <link rel="manifest" href="/manifest.json" />
-
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" />
       {/* Put fonts links here */}
     </Head>
 
