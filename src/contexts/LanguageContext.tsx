@@ -4,7 +4,7 @@ import { createContext, FC, ReactNode, useEffect, useState } from 'react';
 import { messages } from '@/translations/languages';
 
 import { ENGLISH, EN_US, ES_ES, PORTUGUESE, SPANISH } from './constants';
-import { CurrenLanguageCode, CurrentLanguage, LanguageContextProps } from './types';
+import { CurrenLanguageCode, CurrentLanguage, CurrentSimplifiedLanguageCode, LanguageContextProps } from './types';
 
 interface Props {
   children: ReactNode;
@@ -15,6 +15,8 @@ export const LanguageContext = createContext({} as LanguageContextProps);
 const LanguageContextProvider: FC<Props> = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] = useState<CurrentLanguage>('Português');
   const [currentLanguageCode, setCurrentLanguageCode] = useState<CurrenLanguageCode>('pt_BR');
+  const [currentSimplifiedLanguageCode, setCurrentSimplifiedLanguageCode] =
+    useState<CurrentSimplifiedLanguageCode>('pt');
   const router = useRouter();
   const { locale } = router;
 
@@ -50,7 +52,15 @@ const LanguageContextProvider: FC<Props> = ({ children }) => {
   return (
     <LanguageContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
-      value={{ handleChangeLanguage, translatable, currentLanguage, currentLanguageCode, setCurrentLanguageCode }}
+      value={{
+        handleChangeLanguage,
+        translatable,
+        currentLanguage,
+        currentLanguageCode,
+        setCurrentLanguageCode,
+        currentSimplifiedLanguageCode,
+        setCurrentSimplifiedLanguageCode,
+      }}
     >
       {children}
     </LanguageContext.Provider>

@@ -9,7 +9,13 @@ import { useLocation } from '@/hooks/useLocation';
 import { useTemperature } from '@/hooks/useTemperature';
 
 const SelectLanguage: FC = () => {
-  const { handleChangeLanguage, currentLanguage, translatable, setCurrentLanguageCode } = useLanguage();
+  const {
+    handleChangeLanguage,
+    currentLanguage,
+    translatable,
+    setCurrentLanguageCode,
+    setCurrentSimplifiedLanguageCode,
+  } = useLanguage();
   const { currentLocation } = useLocation();
   const { setMetricCurrentTemperature, setImperialCurrentTemperature } = useTemperature();
 
@@ -38,6 +44,7 @@ const SelectLanguage: FC = () => {
             handleChangeLanguage(PT_BR);
             handleSwitchAPIinterfaceInfos('pt_BR');
             setCurrentLanguageCode('pt_BR');
+            setCurrentSimplifiedLanguageCode('pt');
           }}
         >
           <Image src="/icons/languageIcons/brazil.svg" width={20} height={20} alt="" />
@@ -49,6 +56,7 @@ const SelectLanguage: FC = () => {
             handleChangeLanguage(EN_US);
             handleSwitchAPIinterfaceInfos('en');
             setCurrentLanguageCode('en');
+            setCurrentSimplifiedLanguageCode('en');
           }}
         >
           <Image src="/icons/languageIcons/united-states.svg" width={20} height={20} alt="" />
@@ -60,6 +68,7 @@ const SelectLanguage: FC = () => {
             handleChangeLanguage(ES_ES);
             handleSwitchAPIinterfaceInfos('es');
             setCurrentLanguageCode('es');
+            setCurrentSimplifiedLanguageCode('es');
           }}
         >
           <Image src="/icons/languageIcons/spain.svg" width={20} height={20} alt="" />

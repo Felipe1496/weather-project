@@ -14,25 +14,8 @@ interface Props {
 
 const Forecast: FC<Props> = ({ setStep }) => {
   const { currentLocation } = useLocation();
-  const { translatable, currentLanguageCode } = useLanguage();
+  const { translatable, currentLanguageCode, currentSimplifiedLanguageCode } = useLanguage();
   const { setMetricCurrentForecast, setImperialCurrentForecast, imperialCurrentForecast } = useTemperature();
-
-  const options = { weekday: 'long', month: 'short', day: 'numeric' };
-  const day1 = new Date();
-  const day1Array = day1.toLocaleDateString('en-US', options).split(' ');
-  const day2 = new Date();
-  day2.setDate(day1.getDate() + 1);
-  const day2Array = day2.toLocaleDateString('pt-BR', options).split(' ');
-  const day3 = new Date();
-  day3.setDate(day1.getDate() + 2);
-  const day3Array = day3.toLocaleDateString('pt-BR', options).split(' ');
-  const day4 = new Date();
-  day4.setDate(day1.getDate() + 3);
-  const day4Array = day4.toLocaleDateString('pt-BR', options).split(' ');
-  const day5 = new Date();
-  day5.setDate(day1.getDate() + 4);
-  const day5Array = day5.toLocaleDateString('pt-BR', options).split(' ');
-  console.log(day1Array, day2Array, day3Array, day4Array, day5Array);
 
   useEffect(() => {
     const getForecast = async () => {
@@ -52,6 +35,22 @@ const Forecast: FC<Props> = ({ setStep }) => {
     getForecast();
   }, [currentLocation]);
 
+  const day1 = new Date();
+  const options = { weekday: 'long', month: 'short', day: 'numeric' };
+  const day1Array = day1.toLocaleDateString(currentSimplifiedLanguageCode, options).split(' ');
+  const day2 = new Date();
+  day2.setDate(day1.getDate() + 1);
+  const day2Array = day2.toLocaleDateString(currentSimplifiedLanguageCode, options).split(' ');
+  const day3 = new Date();
+  day3.setDate(day1.getDate() + 2);
+  const day3Array = day3.toLocaleDateString(currentSimplifiedLanguageCode, options).split(' ');
+  const day4 = new Date();
+  day4.setDate(day1.getDate() + 3);
+  const day4Array = day4.toLocaleDateString(currentSimplifiedLanguageCode, options).split(' ');
+  const day5 = new Date();
+  day5.setDate(day1.getDate() + 4);
+  const day5Array = day5.toLocaleDateString(currentSimplifiedLanguageCode, options).split(' ');
+
   return (
     imperialCurrentForecast && (
       <div className="flex flex-col items-center text-center">
@@ -64,7 +63,30 @@ const Forecast: FC<Props> = ({ setStep }) => {
         <span className="text-[14px] md:text-xl">{translatable().small.forecast}</span>
 
         <div>
-          <FormatedDate date={day1Array} />
+          <div className="flex items-center">
+            <FormatedDate date={day1Array} />
+            <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+          </div>
+
+          <div className="flex items-center">
+            <FormatedDate date={day2Array} />
+            <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+          </div>
+
+          <div className="flex items-center">
+            <FormatedDate date={day3Array} />
+            <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+          </div>
+
+          <div className="flex items-center">
+            <FormatedDate date={day4Array} />
+            <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+          </div>
+
+          <div className="flex items-center">
+            <FormatedDate date={day5Array} />
+            <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+          </div>
         </div>
       </div>
     )
