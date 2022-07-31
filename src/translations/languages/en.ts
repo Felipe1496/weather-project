@@ -8,6 +8,7 @@ const messages = {
     },
     small: {
       currentLanguage: 'Current Language',
+      forecast: 'See forecast for the next 5 days',
     },
   },
 };

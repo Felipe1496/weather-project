@@ -11,16 +11,16 @@ const SelectLanguage: FC = () => {
     <div className="flex flex-col items-center">
       <div className="flex w-20 justify-between">
         <Button variant="language" type="button" onClick={() => handleChangeLanguage(PT_BR)}>
-          <Image src="/images/languageIcons/brazil.svg" width={20} height={20} alt="" />
+          <Image src="/icons/languageIcons/brazil.svg" width={20} height={20} alt="" />
         </Button>
         <Button variant="language" type="button" onClick={() => handleChangeLanguage(EN_US)}>
-          <Image src="/images/languageIcons/united-states.svg" width={20} height={20} alt="" />
+          <Image src="/icons/languageIcons/united-states.svg" width={20} height={20} alt="" />
         </Button>
         <Button variant="language" type="button" onClick={() => handleChangeLanguage(ES_ES)}>
-          <Image src="/images/languageIcons/spain.svg" width={20} height={20} alt="" />
+          <Image src="/icons/languageIcons/spain.svg" width={20} height={20} alt="" />
         </Button>
       </div>
-      <span className="text-center text-xs text-primary-light">
+      <span className="text-center text-xs">
         {translatable().small.currentLanguage}: {currentLanguage}
       </span>
     </div>
