@@ -14,6 +14,10 @@ const tailwindConfig = {
         tertiary: {
           light: '#D2B3C1',
         },
+        temperature: {
+          cold: '#B6C69B',
+          hot: '#AF9F79'
+        },
       },
 
       fontSize: {
