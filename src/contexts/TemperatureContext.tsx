@@ -10,6 +10,8 @@ const TemperatureContextProvider: FC<Props> = ({ children }) => {
   const [unit, setUnit] = useState(false);
   const [metricCurrentTemperature, setMetricCurrentTemperature] = useState();
   const [imperialCurrentTemperature, setImperialCurrentTemperature] = useState();
+  const [metricCurrentForecast, setMetricCurrentForecast] = useState();
+  const [imperialCurrentForecast, setImperialCurrentForecast] = useState();
 
   return (
     <TemperatureContext.Provider
@@ -21,6 +23,10 @@ const TemperatureContextProvider: FC<Props> = ({ children }) => {
         setImperialCurrentTemperature,
         unit,
         setUnit,
+        metricCurrentForecast,
+        setMetricCurrentForecast,
+        imperialCurrentForecast,
+        setImperialCurrentForecast,
       }}
     >
       {children}

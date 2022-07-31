@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { FC, useEffect } from 'react';
 
-import { getImperialWeatherByLocation, getMetricWeatherByLocation } from '@/api/weather/weather';
+import { getMetricWeatherByLocation, getImperialWeatherByLocation } from '@/api/weather/weather';
 import { useLanguage } from '@/hooks/useLanguage';
 import { useLocation } from '@/hooks/useLocation';
 import { useTemperature } from '@/hooks/useTemperature';
@@ -13,7 +13,7 @@ interface Props {
 
 const Weather: FC<Props> = ({ setStep }) => {
   const { currentLocation } = useLocation();
-  const { translatable } = useLanguage();
+  const { translatable, currentLanguageCode } = useLanguage();
   const {
     unit,
     metricCurrentTemperature,
@@ -24,11 +24,16 @@ const Weather: FC<Props> = ({ setStep }) => {
 
   useEffect(() => {
     const getTemperature = async () => {
-      const metricTemperature = await getMetricWeatherByLocation(currentLocation.value.lat, currentLocation.value.lng);
+      const metricTemperature = await getMetricWeatherByLocation(
+        currentLocation.value.lat,
+        currentLocation.value.lng,
+        currentLanguageCode,
+      );
       setMetricCurrentTemperature(metricTemperature);
       const imperialTemperature = await getImperialWeatherByLocation(
         currentLocation.value.lat,
         currentLocation.value.lng,
+        currentLanguageCode,
       );
       setImperialCurrentTemperature(imperialTemperature);
     };
@@ -38,13 +43,9 @@ const Weather: FC<Props> = ({ setStep }) => {
   return (
     imperialCurrentTemperature && (
       <div className="flex flex-col items-center">
-        <button type="button" onClick={() => setStep(1)}>
+        <button type="button" className="absolute top-5 left-4 md:top-12 md:left-12" onClick={() => setStep(1)}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="icons/right-arrow.svg"
-            alt="back arrow"
-            className="absolute top-12 left-12 h-6 w-6 md:h-11 md:w-11"
-          />
+          <img src="icons/right-arrow.svg" alt="back arrow" className="h-6 w-6 md:h-11 md:w-11" />
         </button>
         <h1 className="text-2xl font-bold md:text-3xl md:tracking-widest">{currentLocation.label}</h1>
 
@@ -78,7 +79,9 @@ const Weather: FC<Props> = ({ setStep }) => {
           </div>
         </div>
 
-        <span className="text-sm underline">{translatable().small.forecast}</span>
+        <button type="button" className="text-sm underline" onClick={() => setStep(3)}>
+          {translatable().small.viewforecast}
+        </button>
       </div>
     )
   );

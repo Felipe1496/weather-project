@@ -2,6 +2,7 @@ import { FC, useState } from 'react';
 
 import Page from '@/components/common/page/page';
 
+import Forecast from '../components/forecast';
 import SearchCity from '../components/search-city';
 import SelectLanguage from '../components/select-language';
 import SwitchUnit from '../components/switch-unit';
@@ -17,11 +18,20 @@ const HomePage: FC = () => {
         className="relative flex h-screen w-screen flex-col items-center justify-center bg-cover bg-bottom bg-no-repeat px-5"
         style={{ backgroundImage: "url('images/sky.png')" }}
       >
-        <div className="absolute top-12 right-12">
+        <div className="absolute top-5 right-5 md:right-12 md:top-12">
           <SwitchUnit />
         </div>
 
-        <div>{step === 1 ? <SearchCity setStep={setStep} /> : <Weather setStep={setStep} />}</div>
+        <div>
+          {/* eslint-disable-next-line no-nested-ternary */}
+          {step === 1 ? (
+            <SearchCity setStep={setStep} />
+          ) : step === 2 ? (
+            <Weather setStep={setStep} />
+          ) : (
+            <Forecast setStep={setStep} />
+          )}
+        </div>
         <div className="absolute bottom-4">
           <SelectLanguage />
         </div>
