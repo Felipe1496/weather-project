@@ -70,7 +70,7 @@ const Autocomplete: FC<Props> = ({ setStep }) => {
     <div>
       <AsyncPaginate
         instanceId="postType"
-        placeholder={translatable().placeholder.city}
+        placeholder={<div className="text-secondary-dark">{translatable().placeholder.city}</div>}
         debounceTimeout={1001}
         value={search}
         onChange={handleOnChange}

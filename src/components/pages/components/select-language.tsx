@@ -1,7 +1,12 @@
 import Image from 'next/image';
 import { FC } from 'react';
 
-import { getMetricWeatherByLocation, getImperialWeatherByLocation } from '@/api/weather/weather';
+import {
+  getMetricWeatherByLocation,
+  getImperialWeatherByLocation,
+  getMetricForecast,
+  getImperialForecast,
+} from '@/api/weather/weather';
 import Button from '@/components/common/Button/button';
 import { EN_US, ES_ES, PT_BR } from '@/contexts/constants';
 import { useLanguage } from '@/hooks/useLanguage';
@@ -17,7 +22,12 @@ const SelectLanguage: FC = () => {
     setCurrentSimplifiedLanguageCode,
   } = useLanguage();
   const { currentLocation } = useLocation();
-  const { setMetricCurrentTemperature, setImperialCurrentTemperature } = useTemperature();
+  const {
+    setMetricCurrentTemperature,
+    setImperialCurrentTemperature,
+    setMetricCurrentForecast,
+    setImperialCurrentForecast,
+  } = useTemperature();
 
   const handleSwitchAPIinterfaceInfos = async (lang: string) => {
     const newMetricCurrentTemperature = await getMetricWeatherByLocation(
@@ -32,6 +42,11 @@ const SelectLanguage: FC = () => {
       lang,
     );
     setImperialCurrentTemperature(newImperialCurrentTemperature);
+
+    const newMetricForecast = await getMetricForecast(currentLocation.value.lat, currentLocation.value.lng, lang);
+    setMetricCurrentForecast(newMetricForecast);
+    const newImperialForecast = await getImperialForecast(currentLocation.value.lat, currentLocation.value.lng, lang);
+    setImperialCurrentForecast(newImperialForecast);
   };
 
   return (

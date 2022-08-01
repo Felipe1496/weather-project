@@ -15,7 +15,8 @@ interface Props {
 const Forecast: FC<Props> = ({ setStep }) => {
   const { currentLocation } = useLocation();
   const { translatable, currentLanguageCode, currentSimplifiedLanguageCode } = useLanguage();
-  const { setMetricCurrentForecast, setImperialCurrentForecast, imperialCurrentForecast } = useTemperature();
+  const { setMetricCurrentForecast, setImperialCurrentForecast, imperialCurrentForecast, metricCurrentForecast, unit } =
+    useTemperature();
 
   useEffect(() => {
     const getForecast = async () => {
@@ -35,20 +36,23 @@ const Forecast: FC<Props> = ({ setStep }) => {
     getForecast();
   }, [currentLocation]);
 
-  const day1 = new Date();
   const options = { weekday: 'long', month: 'short', day: 'numeric' };
+  const today = new Date();
+
+  const day1 = new Date();
+  day1.setDate(today.getDate() + 1);
   const day1Array = day1.toLocaleDateString(currentSimplifiedLanguageCode, options).split(' ');
   const day2 = new Date();
-  day2.setDate(day1.getDate() + 1);
+  day2.setDate(day1.getDate() + 2);
   const day2Array = day2.toLocaleDateString(currentSimplifiedLanguageCode, options).split(' ');
   const day3 = new Date();
-  day3.setDate(day1.getDate() + 2);
+  day3.setDate(day1.getDate() + 3);
   const day3Array = day3.toLocaleDateString(currentSimplifiedLanguageCode, options).split(' ');
   const day4 = new Date();
-  day4.setDate(day1.getDate() + 3);
+  day4.setDate(day1.getDate() + 4);
   const day4Array = day4.toLocaleDateString(currentSimplifiedLanguageCode, options).split(' ');
   const day5 = new Date();
-  day5.setDate(day1.getDate() + 4);
+  day5.setDate(day1.getDate() + 5);
   const day5Array = day5.toLocaleDateString(currentSimplifiedLanguageCode, options).split(' ');
 
   return (
@@ -65,27 +69,92 @@ const Forecast: FC<Props> = ({ setStep }) => {
         <div>
           <div className="flex items-center">
             <FormatedDate date={day1Array} />
+            <span>
+              {unit
+                ? Math.round(metricCurrentForecast.list[0].main.temp_min)
+                : Math.round(imperialCurrentForecast.list[0].main.temp_min)}
+              °
+            </span>
             <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+            <span>
+              {unit
+                ? Math.round(metricCurrentForecast.list[0].main.temp_max)
+                : Math.round(imperialCurrentForecast.list[0].main.temp_max)}
+              °
+            </span>
+            <span className="hidden md:flex">{metricCurrentForecast.list[0].weather[0].description}</span>
           </div>
 
           <div className="flex items-center">
             <FormatedDate date={day2Array} />
+            <span>
+              {unit
+                ? Math.round(metricCurrentForecast.list[1].main.temp_min)
+                : Math.round(imperialCurrentForecast.list[1].main.temp_min)}
+              °
+            </span>
             <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+            <span>
+              {unit
+                ? Math.round(metricCurrentForecast.list[1].main.temp_max)
+                : Math.round(imperialCurrentForecast.list[1].main.temp_max)}
+              °
+            </span>
+            <span className="hidden md:flex">{metricCurrentForecast.list[1].weather[0].description}</span>
           </div>
 
           <div className="flex items-center">
             <FormatedDate date={day3Array} />
+            <span>
+              {unit
+                ? Math.round(metricCurrentForecast.list[2].main.temp_min)
+                : Math.round(imperialCurrentForecast.list[2].main.temp_min)}
+              °
+            </span>
             <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+            <span>
+              {unit
+                ? Math.round(metricCurrentForecast.list[2].main.temp_max)
+                : Math.round(imperialCurrentForecast.list[2].main.temp_max)}
+              °
+            </span>
+            <span className="hidden md:flex">{metricCurrentForecast.list[2].weather[0].description}</span>
           </div>
 
           <div className="flex items-center">
             <FormatedDate date={day4Array} />
+            <span>
+              {unit
+                ? Math.round(metricCurrentForecast.list[3].main.temp_min)
+                : Math.round(imperialCurrentForecast.list[3].main.temp_min)}
+              °
+            </span>
             <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+            <span>
+              {unit
+                ? Math.round(metricCurrentForecast.list[3].main.temp_max)
+                : Math.round(imperialCurrentForecast.list[3].main.temp_max)}
+              °
+            </span>
+            <span className="hidden md:flex">{metricCurrentForecast.list[3].weather[0].description}</span>
           </div>
 
           <div className="flex items-center">
             <FormatedDate date={day5Array} />
+            <span>
+              {unit
+                ? Math.round(metricCurrentForecast.list[4].main.temp_min)
+                : Math.round(imperialCurrentForecast.list[4].main.temp_min)}
+              °
+            </span>
             <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+            <span>
+              {unit
+                ? Math.round(metricCurrentForecast.list[4].main.temp_max)
+                : Math.round(imperialCurrentForecast.list[4].main.temp_max)}
+              °
+            </span>
+            <span className="hidden md:flex">{metricCurrentForecast.list[4].weather[0].description}</span>
           </div>
         </div>
       </div>
