@@ -13,7 +13,7 @@ const FormatedDate: FC<Props> = ({ date }) => {
     case 'en':
       return (
         <div>
-          <span className="text-sm font-bold capitalize">
+          <span className="text-sm font-bold capitalize md:text-xl">
             {date[0].slice(0, 3)}, {date[2]} {date[1]}
           </span>
         </div>
@@ -21,7 +21,7 @@ const FormatedDate: FC<Props> = ({ date }) => {
     case 'es':
       return (
         <div>
-          <span className="text-sm font-bold capitalize">
+          <span className="text-sm font-bold capitalize md:text-xl">
             {date[0].slice(0, 3)}, {date[1]} {date[2]}
           </span>
         </div>
@@ -30,10 +30,9 @@ const FormatedDate: FC<Props> = ({ date }) => {
     default:
       return (
         <div>
-          <span className="text-sm font-bold capitalize">{`${date[0].slice(0, 3)}, ${date[1]} ${date[3].slice(
-            0,
-            3,
-          )}`}</span>
+          <span className="text-sm font-bold capitalize md:text-xl">{`${date[0].slice(0, 3)}, ${
+            date[1]
+          } ${date[3].slice(0, 3)}`}</span>
         </div>
       );
   }
