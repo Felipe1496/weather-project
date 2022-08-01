@@ -64,13 +64,13 @@ const Forecast: FC<Props> = ({ setStep }) => {
         </button>
 
         <h1 className="text-2xl font-bold md:text-3xl">{currentLocation.label}</h1>
-        <span className="text-[14px] md:text-xl">{translatable().small.forecast}</span>
+        <span className="mb-[15px] text-[14px] md:mb-[90px] md:text-xl">{translatable().small.forecast}</span>
 
         <div>
-          <div className="flex items-center gap-10">
+          <div className="flex items-center gap-3 md:gap-10">
             <FormatedDate date={day1Array} />
             <WeatherIcon weatherDescription={metricCurrentForecast.list[0].weather[0].description} />
-            <div className="md: flex items-center gap-3 md:gap-5">
+            <div className="flex items-center gap-3 md:gap-5">
               <span className="text-sm md:text-lg">
                 {unit
                   ? Math.round(metricCurrentForecast.list[0].main.temp_min)
@@ -88,10 +88,10 @@ const Forecast: FC<Props> = ({ setStep }) => {
             <span className="hidden md:flex">{metricCurrentForecast.list[0].weather[0].description}</span>
           </div>
 
-          <div className="flex items-center gap-10">
+          <div className="flex items-center gap-3 md:gap-10">
             <FormatedDate date={day2Array} />
             <WeatherIcon weatherDescription={metricCurrentForecast.list[1].weather[0].description} />
-            <div className="md: flex items-center gap-3 md:gap-5">
+            <div className="flex items-center gap-3 md:gap-5">
               <span className="text-sm md:text-lg">
                 {unit
                   ? Math.round(metricCurrentForecast.list[1].main.temp_min)
@@ -109,10 +109,10 @@ const Forecast: FC<Props> = ({ setStep }) => {
             <span className="hidden md:flex">{metricCurrentForecast.list[1].weather[0].description}</span>
           </div>
 
-          <div className="flex items-center gap-10">
+          <div className="flex items-center gap-3 md:gap-10">
             <FormatedDate date={day3Array} />
             <WeatherIcon weatherDescription={metricCurrentForecast.list[2].weather[0].description} />
-            <div className="md: flex items-center gap-3 md:gap-5">
+            <div className="flex items-center gap-3 md:gap-5">
               <span className="text-sm md:text-lg">
                 {unit
                   ? Math.round(metricCurrentForecast.list[2].main.temp_min)
@@ -130,10 +130,10 @@ const Forecast: FC<Props> = ({ setStep }) => {
             <span className="hidden md:flex">{metricCurrentForecast.list[2].weather[0].description}</span>
           </div>
 
-          <div className="flex items-center gap-10">
+          <div className="flex items-center gap-3 md:gap-10">
             <FormatedDate date={day4Array} />
             <WeatherIcon weatherDescription={metricCurrentForecast.list[3].weather[0].description} />
-            <div className="md: flex items-center gap-3 md:gap-5">
+            <div className="flex items-center gap-3 md:gap-5">
               <span className="text-sm md:text-lg">
                 {unit
                   ? Math.round(metricCurrentForecast.list[3].main.temp_min)
@@ -151,10 +151,10 @@ const Forecast: FC<Props> = ({ setStep }) => {
             <span className="hidden md:flex">{metricCurrentForecast.list[3].weather[0].description}</span>
           </div>
 
-          <div className="flex items-center gap-10">
+          <div className="flex items-center gap-3 md:gap-10">
             <FormatedDate date={day5Array} />
             <WeatherIcon weatherDescription={metricCurrentForecast.list[4].weather[0].description} />
-            <div className="md: flex items-center gap-3 md:gap-5">
+            <div className="flex items-center gap-3 md:gap-5">
               <span className="text-sm md:text-lg">
                 {unit
                   ? Math.round(metricCurrentForecast.list[4].main.temp_min)

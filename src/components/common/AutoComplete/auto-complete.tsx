@@ -25,16 +25,16 @@ const customStyles = {
   menu: (provided: any) => ({
     ...provided,
     margin: '0px',
-    boxShadow: '0px 0px',
+    boxShadow: '0px 4px 4px rgba(106, 162, 209, 0.8)',
     borderRadius: '0px 0px 10px 10px',
   }),
   control: (provided: any, state: any) => ({
     ...provided,
     borderRadius: state.isFocused ? '10px 10px 0px 0px' : '10px',
   }),
-  clearIndicator: (provided: any) => ({
-    ...provided,
-    color: 'blue',
+  input: (base: any) => ({
+    ...base,
+    color: '#6AA2D1',
   }),
 };
 

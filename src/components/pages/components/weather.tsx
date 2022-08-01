@@ -49,7 +49,7 @@ const Weather: FC<Props> = ({ setStep }) => {
         </button>
         <h1 className="text-2xl font-bold md:text-3xl md:tracking-widest">{currentLocation.label}</h1>
 
-        <span className="capitalize md:text-xl">{metricCurrentTemperature.weather[0].description}</span>
+        <span className="capitalize md:text-xl ">{metricCurrentTemperature.weather[0].description}</span>
 
         <div className="flex">
           <span className="text-[48px] md:text-4xl">
