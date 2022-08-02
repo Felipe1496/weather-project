@@ -13,7 +13,6 @@ const LOCATION_INITIAL_VALUE = {
 
 const LocationContextProvider: FC<Props> = ({ children }) => {
   const [currentLocation, setCurrentLocation] = useState(LOCATION_INITIAL_VALUE);
-  console.log(currentLocation);
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
