@@ -17,7 +17,7 @@ const LanguageContextProvider: FC<Props> = ({ children }) => {
   const [currentLanguageCode, setCurrentLanguageCode] = useState<CurrenLanguageCode>('pt_BR');
   const [currentSimplifiedLanguageCode, setCurrentSimplifiedLanguageCode] =
     useState<CurrentSimplifiedLanguageCode>('pt');
-  const router = useRouter();
+  const router = useRouter() || { router: { locale: '' } };
   const { locale } = router;
 
   useEffect(() => {
