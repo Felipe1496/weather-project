@@ -1,18 +1,19 @@
 import { FC } from 'react';
 
 import { useLanguage } from '@/hooks/useLanguage';
+import { HTMLAttributesProps } from '@/types/html';
 
-interface Props {
+interface Props extends HTMLAttributesProps {
   date: string[];
 }
 
-const FormatedDate: FC<Props> = ({ date }) => {
+const FormatedDate: FC<Props> = ({ date, className }) => {
   const { currentSimplifiedLanguageCode } = useLanguage();
 
   switch (currentSimplifiedLanguageCode) {
     case 'en':
       return (
-        <div>
+        <div className={className}>
           <span className="text-sm font-bold capitalize md:text-xl">
             {date[0].slice(0, 3)}, {date[2]} {date[1]}
           </span>
@@ -20,7 +21,7 @@ const FormatedDate: FC<Props> = ({ date }) => {
       );
     case 'es':
       return (
-        <div>
+        <div className={className}>
           <span className="text-sm font-bold capitalize md:text-xl">
             {date[0].slice(0, 3)}, {date[1]} {date[2]}
           </span>
@@ -29,7 +30,7 @@ const FormatedDate: FC<Props> = ({ date }) => {
 
     default:
       return (
-        <div>
+        <div className={className}>
           <span className="text-sm font-bold capitalize md:text-xl">{`${date[0].slice(0, 3)}, ${
             date[1]
           } ${date[3].slice(0, 3)}`}</span>
