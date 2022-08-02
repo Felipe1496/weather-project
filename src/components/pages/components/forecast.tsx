@@ -77,7 +77,7 @@ const Forecast: FC<Props> = ({ setStep }) => {
                   : Math.round(imperialCurrentForecast.list[0].main.temp_min)}
                 °
               </span>
-              <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+              <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot md:w-44" />
               <span className="text-sm md:text-lg">
                 {unit
                   ? Math.round(metricCurrentForecast.list[0].main.temp_max)
@@ -98,7 +98,7 @@ const Forecast: FC<Props> = ({ setStep }) => {
                   : Math.round(imperialCurrentForecast.list[1].main.temp_min)}
                 °
               </span>
-              <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+              <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot md:w-44" />
               <span className="text-sm md:text-lg">
                 {unit
                   ? Math.round(metricCurrentForecast.list[1].main.temp_max)
@@ -119,7 +119,7 @@ const Forecast: FC<Props> = ({ setStep }) => {
                   : Math.round(imperialCurrentForecast.list[2].main.temp_min)}
                 °
               </span>
-              <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+              <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot md:w-44" />
               <span className="text-sm md:text-lg">
                 {unit
                   ? Math.round(metricCurrentForecast.list[2].main.temp_max)
@@ -140,7 +140,7 @@ const Forecast: FC<Props> = ({ setStep }) => {
                   : Math.round(imperialCurrentForecast.list[3].main.temp_min)}
                 °
               </span>
-              <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+              <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot md:w-44" />
               <span className="text-sm md:text-lg">
                 {unit
                   ? Math.round(metricCurrentForecast.list[3].main.temp_max)
@@ -161,7 +161,7 @@ const Forecast: FC<Props> = ({ setStep }) => {
                   : Math.round(imperialCurrentForecast.list[4].main.temp_min)}
                 °
               </span>
-              <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot" />
+              <div className="h-1 w-24 bg-gradient-to-r from-temperature-cold to-temperature-hot md:w-44" />
               <span className="text-sm md:text-lg">
                 {unit
                   ? Math.round(metricCurrentForecast.list[4].main.temp_max)
